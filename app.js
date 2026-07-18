@@ -102,6 +102,7 @@ function render() {
 window.addEventListener("hashchange", render);
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("app-title").addEventListener("click", () => { location.hash = "#/"; });
+  seedDefaultTasksOnce();
   render();
 
   if ("serviceWorker" in navigator) {

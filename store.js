@@ -112,3 +112,13 @@ function toggleDaily(id) {
 function deleteDaily(id) {
   saveDaily(loadDaily().filter(d => d.id !== id));
 }
+
+// Läuft einmalig pro Browser/Gerät, damit ein paar bekannte offene Punkte
+// nicht von Hand eingetippt werden müssen. Danach nie wieder (Flag in localStorage).
+function seedDefaultTasksOnce() {
+  if (localStorage.getItem("seedApplied")) return;
+  addTask("Bibel weiterlesen (Markus 9)", "Bibel");
+  addTask("Für Umschulung lernen (REWE & Tabellenkalkulation)", "Umschulung");
+  addTask("Ins Gym gehen", "Fitness");
+  localStorage.setItem("seedApplied", "1");
+}
